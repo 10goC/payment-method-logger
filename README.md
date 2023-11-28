@@ -11,3 +11,11 @@ Inside the WooCommerce menu you will find a "Logger fallback" submenu to setup t
 Tested with WooCommerce Order Test plugin.
 
 <u>Note:</u> The **WooCommerce Order Test** plugin doesn't work with Gutenberg blocks, so in order to work with it you should go to the checkout page, open it in code view and replace the default block-based content with the shortcode ```[woocommerce_checkout]```
+
+### Testing failures
+
+We can simulate failed payments by tweaking around a little bit the Order Test plugin.
+
+By applying the changes shown below, we can then switch the value for the  ```$fail``` variable from 0 to 1 to enable or disable failed payments.
+
+![Simulate failed payments](./assets/img/simulate-failed-payments.png "Simulate failed payments")
