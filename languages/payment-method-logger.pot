@@ -1,0 +1,39 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: 2023-11-28 03:56-0300\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: src/Controller/Admin.php:28
+msgid "Logger Fallback"
+msgstr ""
+
+#: src/Controller/Admin.php:39
+msgid "Order Log"
+msgstr ""
+
+#: src/Controller/Admin.php:84
+msgid "Settings saved"
+msgstr ""
+
+#: src/Util/Validator/UrlValidator.php:13
+msgid "Invalid URL"
+msgstr ""
+
+#: views/admin/logger-fallback.php:3
+msgid "Payment Method Logger"
+msgstr ""
+
+#: views/admin/logger-fallback.php:4
+msgid "Fallback settings"
+msgstr ""
+
+#: views/admin/logger-fallback.php:9
+msgid "Webhook URL"
+msgstr ""
+
+#: views/admin/logger-fallback.php:18
+msgid "Save changes"
+msgstr ""
