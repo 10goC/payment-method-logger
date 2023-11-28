@@ -42,6 +42,14 @@ class Plugin
     }
 
     /**
+     * Get base URL
+     */
+    public static function base_url()
+    {
+        return plugin_dir_url( __FILE__ );
+    }
+
+    /**
      * Register autoloader
      */
     public function register_autoloader()

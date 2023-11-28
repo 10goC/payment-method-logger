@@ -1,0 +1,24 @@
+#order-log-meta-box pre {
+    background: #393939;
+    padding: 10px;
+    border: 1px solid #ddd;
+    box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.2);
+    white-space: pre-wrap;
+    color: #eee;
+}
+
+#order-log-meta-box pre .key {
+    color: #fed6bb;
+}
+#order-log-meta-box pre .string {
+    color: #d48e8e;
+}
+#order-log-meta-box pre .number {
+    color: #66cedd;
+}
+#order-log-meta-box pre .boolean {
+    color: #f9ed8d;
+}
+#order-log-meta-box pre .empty {
+    color: #999;
+}
