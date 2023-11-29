@@ -2,6 +2,7 @@
 namespace PaymentMethodLogger\Controller;
 
 use PaymentMethodLogger\Plugin;
+use PaymentMethodLogger\Util\Colorizer;
 use PaymentMethodLogger\Util\Validator\UrlValidator;
 use PaymentMethodLogger\View;
 use WC_Order;
@@ -19,6 +20,7 @@ class Admin
         add_action( 'admin_menu', [self::class, 'register_payments_menu_link'], 80 );
         add_action( 'add_meta_boxes', [ self::class, 'add_log_meta_box' ], 50 );
         add_action( 'admin_enqueue_scripts', [ self::class, 'admin_styles' ] );
+        add_filter( 'order_log_meta_box_content', [Colorizer::class, 'pretty_print'] );
     }
 
     /**
@@ -114,37 +116,9 @@ class Admin
             return;
         }
         $contents = file_get_contents( "$filepath/$filename" );
-        echo '<pre>' . self::pretty_print( $contents ) . '</pre>';
-    }
-
-    /**
-     * Add colors to JSON formatted string
-     */
-    public static function pretty_print( $json )
-    {
-        $lines = explode( PHP_EOL, $json );
-        $out = [];
-        foreach ( $lines as $line ) {
-            $parts = explode( ':', $line );
-            if ( count( $parts ) > 1 ) {
-                $key = $parts[0];
-                $value = trim( substr( $line, strlen( $key ) + 1 ) );
-                $key = '<span class="key">' . $key . '</span>';
-                if ( is_numeric( trim( $value, ',' ) ) ) {
-                    $value = '<span class="number">' . $value . '</span>';
-                } else if ( preg_match( '/(true|false)/i', $value ) ) {
-                    $value = '<span class="boolean">' . $value . '</span>';
-                } else if ( in_array( trim( $value, ',' ), [ '[]', '{}', '""' ] ) ) {
-                    $value = '<span class="empty">' . $value . '</span>';
-                } else {
-                    $value = '<span class="string">' . $value . '</span>';
-                }
-                $out[] = $key . ': ' . $value;
-            } else {
-                $out[] = $line;
-            }
-        }
-        return implode( PHP_EOL, $out );
+        View::render( 'admin/order-log-meta-box', [
+            'order-log' => $contents
+        ]);
     }
 
     /**
